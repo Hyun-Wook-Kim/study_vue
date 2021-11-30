@@ -9,7 +9,7 @@
     <!-- 필터선택페이지 -->
     <div class="filterPage" v-if="step == 1">
 
-  <div class="upload-image"></div>
+  <div class="upload-image" :style="{backgroundImage : `url(${uploadedImg})`}"></div>
   <div class="filters">
     <div class="filter-1"></div>
     <div class="filter-1"></div>
@@ -45,6 +45,8 @@ export default {
     props : {
         instaData : Array,
         step : Number,
+        uploadedImg: String,
+        
     }
 
 }

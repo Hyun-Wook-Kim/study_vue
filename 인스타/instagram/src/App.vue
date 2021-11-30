@@ -9,12 +9,12 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :instaData="instaData" :step="step"/>
+  <Container :instaData="instaData" :step="step" :uploadedImg="uploadedImg" />
   <button @click="more">더 보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input @change="upload" type="file" id="file" class="inputfile" />
+      <input @change="upload" type="file" id="file" class="inputfile" multiple accept="image/*" />
       <label for="file" class="input-plus">+</label>
     </ul>
  </div>
@@ -44,6 +44,8 @@ export default {
     instaData : instaData,
     pageIndex : '0',
     step : 0,
+    uploadedImg : '',
+
     }
   },
   methods: {
@@ -57,7 +59,16 @@ export default {
       ).catch(()=>{alert('마지막 게시물입니다')})
     },
     upload(e){
-      e.target.files
+      let file = e.target.files;
+      console.log(file[0])
+      if(file[0].type.indexOf('image') == -1){
+        alert('이미지 파일만 가능합니다');
+        return false;
+      }
+      let url = URL.createObjectURL(file[0]);
+      this.uploadedImg = url;
+      console.log(this.uploadedImg)
+      this.step++;
     }
   },
 
