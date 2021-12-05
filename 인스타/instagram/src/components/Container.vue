@@ -9,45 +9,67 @@
     <!-- 필터선택페이지 -->
     <div class="filterPage" v-if="step == 1">
 
-  <div class="upload-image" :style="{backgroundImage : `url(${uploadedImg})`}"></div>
+  <div class="upload-image" :style="{backgroundImage : `url(${uploadedImg})`}" :class="selectedFilter"></div>
   <div class="filters">
-    <div class="filter-1"></div>
-    <div class="filter-1"></div>
-    <div class="filter-1"></div>
-    <div class="filter-1"></div>
-    <div class="filter-1"></div>
+
+  <FilterBox v-for="filter in filterList" :key="filter" :uploadedImg="uploadedImg" :class="filter" :filter="filter">
+
+  </FilterBox>
+
   </div>
       </div>
 
 <!-- 글작성페이지 -->
     <div class="filterPage" v-if="step == 2">
-  <div class="upload-image"></div>
+  <div class="upload-image"  :style="{backgroundImage : `url(${uploadedImg})`}" :class="selectedFilter"></div>
   <div class="write">
-    <textarea class="write-box">write!</textarea>
+    <textarea class="write-box" v-model="text" @input="this.$emit('textSend', $event.target.value)">write!</textarea>
   </div>
     </div>
 
-    </div>
+  <!--마이페이지 -->
+  <div v-if="step == 3">
+  <MyPage :one="1"></MyPage>  
+  </div>
+
+
+</div>
 
 
 </template>
 
 <script>
 import  Post from './Post'
-
+import FilterBox from './FilterBox.vue'
+import MyPage from './MyPage.vue'
 
 export default { 
     name: 'Container',
     components: {
         Post : Post,
+        FilterBox : FilterBox,
+        MyPage : MyPage,
     },
 
     props : {
         instaData : Array,
         step : Number,
         uploadedImg: String,
+        selectedFilter : String,
         
-    }
+    },
+
+    data(){
+      return {
+        text: '',
+        filterList : [ "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
+"inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
+"reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"],
+
+      }
+    },
+
+
 
 }
 </script>

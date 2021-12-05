@@ -4,10 +4,11 @@
       <div class="profile" :style="{ backgroundImage : `url(${data.userImage})` }"></div>
       <span class="profile-name">{{data.name}}</span>
     </div>
-    <div class="post-body" :style="{ backgroundImage : `url(${data.postImage})`}">
+    <div class="post-body" :style="{ backgroundImage : `url(${data.postImage})`}" :class="data.filter">
     </div>
     <div class="post-content">
-      <p>{{data.likes}} likes</p>
+      <p v-if="liked == false" @click="$store.commit('like'); liked=true">{{ $store.state.likes }} likes</p>
+      <p v-else-if="liked == true" @click="$store.commit('dislike'); liked=false">{{ $store.state.likes }} likes</p>
       <p><strong>{{ data.name }}</strong> {{ data.content }}</p>
       <p class="date">{{ data.date }}</p>
     </div>
@@ -20,6 +21,11 @@
         name: 'Post', 
         props : { 
             data : Object,
+        },
+        data(){
+          return {
+            liked : false
+          }
         }
     }
 
