@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+.header {
+  margin-top: 50px;
+  width: 100%;
+  height: auto;
+  line-height: 40px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: darkslategray;
+}
+
+.list-table {
+  margin-top: 100px;
+}
+
+.list-table table {
+  width: 100%;
+  text-align: center;
+  padding: 0 15px;
+  word-break: keep-all;
+}
+
+.list-table .button-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: right;
+  padding-right: 40px;
+}
+
+.list-table .button-wrap button {
+  padding: 5px 5px;
+  margin-left: 15px;
+  background-color: darkslategray;
+  color: white;
+  font-weight: 600;
+}
+
+.list-table.edit-list input {
+  width: 100%;
+  padding: 5px;
+}
+
+.list-table.edit-list select {
+  padding: 5px;
+}
+
+.confirm-wrap {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.confirm-wrap .confirm {
+  width: 80%;
+  padding: 10px;
+  background-color: darkslategray;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+/*# sourceMappingURL=style.css.map */
